@@ -27,6 +27,23 @@ public class PlayerCamera : NetworkBehaviour
         if (!IsOwner) 
             return;
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            
+            return;
+        }
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -35,17 +52,5 @@ public class PlayerCamera : NetworkBehaviour
         pitch = Mathf.Clamp(pitch, -80f, 80f);
         cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
     }
 }
