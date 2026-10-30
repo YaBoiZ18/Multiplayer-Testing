@@ -33,10 +33,17 @@ public class PlayerHealth : NetworkBehaviour
         currentHealth.OnValueChanged -= OnHealthChanged;
     }
 
+    public void ApplyDamage(int damage)
+    {
+        if(!IsServer) return;
+
+        currentHealth.Value = Mathf.Max(currentHealth.Value - damage, 0);
+    }
+
     [ServerRpc]
     private void TakeDamageServerRpc(int damage)
     {
-        currentHealth.Value = Mathf.Max(currentHealth.Value - damage, 0);
+        ApplyDamage(damage);
     }
 
     private void Update()
