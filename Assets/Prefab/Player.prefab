@@ -233,9 +233,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAbilities
   ShowTopMostFoldoutHeaderGroup: 1
-  fireballPrefab: {fileID: 8349468936892958627, guid: 4ff2ccf9781683e4ab19b782c0c8d883, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 4906e6529a84dc14895152fcdcde79b1, type: 2}
   firePoint: {fileID: 952893459680933733}
-  fireballCooldown: 1.5
 --- !u!114 &6627685160953376414
 MonoBehaviour:
   m_ObjectHideFlags: 0
